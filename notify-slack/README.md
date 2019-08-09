@@ -1,6 +1,6 @@
 # Notify with Slack  
 
-This Nebula Workflow sends a message to a Slack channel using the Terraform Slack Step. 
+This Nebula Workflow sends a message to a Slack channel using the Slack Step. 
 
 The Workflow is defined in `notify-slack.yml`. 
 
