@@ -1,0 +1,79 @@
+version: v1
+description: Nebula Deploy Demo
+
+steps:
+- name: init-workflow
+  image: alpine:latest
+  input:
+    - echo "Initializing workflow - Nebula Deploy Demo"
+    - echo "Deploying a NodeJS application to Kubernetes"
+- name: deploy-mongodb
+  image: gcr.io/nebula-tasks/nebula-helm-deployer:57d9f2b
+  spec:
+    values:
+      mongodbRootPassword:
+        $type: Secret
+        name: mongo_root_password
+      mongodbUsername:
+        $type: Secret
+        name: mongo_username
+      mongodbPassword:
+        $type: Secret
+        name: mongo_password
+      mongodbDatabase:
+        $type: Secret
+        name: mongo_database
+    name: mongo
+    chart: stable/mongodb
+    namespace: default
+    cluster:
+      name: nebula-demo-cluster
+      url:
+        $type: Secret
+        name: url
+      cadata:
+        $type: Secret
+        name: cadata
+      token:
+        $type: Secret
+        name: token
+  dependsOn:
+    - init-workflow
+- name: deploy-nebula-demo
+  image: gcr.io/nebula-tasks/nebula-kubectl:57d9f2b
+  spec:
+    command: apply
+    file: deploy/nebula-demo.yaml
+    namespace: default
+    cluster:
+      name: nebula-demo-cluster
+      url:
+        $type: Secret
+        name: url
+      cadata:
+        $type: Secret
+        name: cadata
+      token:
+        $type: Secret
+        name: token
+    git:
+      ssh_key:
+        $type: Secret
+        name: ssh_key
+      known_hosts:
+        $type: Secret
+        name: known_hosts
+      name: nebula-demo
+      repository: git@github.com:puppetlabs/nebula-demo.git
+  dependsOn:
+  - deploy-mongodb
+- name: slack-notify
+  image: gcr.io/nebula-tasks/nebula-slack-notification:57d9f2b
+  spec:
+    apitoken:
+      $type: Secret
+      name: slack-token
+    channel: "#nebula-workflows"
+    message: "Deployment succeeded!"
+  dependsOn:
+  - deploy-nebula-demo
