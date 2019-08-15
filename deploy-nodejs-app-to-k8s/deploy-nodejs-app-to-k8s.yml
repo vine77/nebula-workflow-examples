@@ -57,12 +57,6 @@ steps:
         $type: Secret
         name: token
     git:
-      ssh_key:
-        $type: Secret
-        name: ssh_key
-      known_hosts:
-        $type: Secret
-        name: known_hosts
       name: nebula-demo
       repository: git@github.com:puppetlabs/nebula-workflow-examples.git
   dependsOn:
