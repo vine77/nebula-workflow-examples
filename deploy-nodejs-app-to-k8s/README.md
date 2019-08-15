@@ -9,6 +9,8 @@ The Workflow is defined in `deploy-nodejs-app-to-k8s.yml`.
 <h4 align="center"><img src="../media/deploy-nodejs-app-to-k8s.png" alt="Deploy Nodejs App to K8s Workflow"></h4>
 
 ## Pre-requisites
+This Workflow assumes that you have a publicly accessible Kubernetes cluster. 
+
 This Workflow requires configuration of the following secrets:
 
 | Secret        | Description   | Notes   | 
