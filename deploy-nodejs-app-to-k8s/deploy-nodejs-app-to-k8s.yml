@@ -11,18 +11,10 @@ steps:
   image: gcr.io/nebula-tasks/nebula-helm-deployer:57d9f2b
   spec:
     values:
-      mongodbRootPassword:
-        $type: Secret
-        name: mongo_root_password
-      mongodbUsername:
-        $type: Secret
-        name: mongo_username
-      mongodbPassword:
-        $type: Secret
-        name: mongo_password
-      mongodbDatabase:
-        $type: Secret
-        name: mongo_database
+      mongodbRootPassword: mongo-password
+      mongodbUsername: mongo-user
+      mongodbPassword: mongo-password
+      mongodbDatabase: mongo-database
     name: mongo
     chart: stable/mongodb
     namespace: default
