@@ -58,7 +58,7 @@ steps:
         name: token
     git:
       name: nebula-workflow-examples
-      repository: git@github.com:puppetlabs/nebula-workflow-examples.git
+      repository: https://github.com/puppetlabs/nebula-workflow-examples.git
   dependsOn:
   - deploy-mongodb
 - name: slack-notify
