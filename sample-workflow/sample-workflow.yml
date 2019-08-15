@@ -86,11 +86,3 @@ steps:
       - sleep 2
     dependsOn:
       - Step 8 - Adjust traffic to 100% 
-  - name: Step 4b - Configure monitoring 
-    image: alpine:latest
-    input: 
-      - echo "Configure Datadog monitoring for application" 
-      - sleep 1
-    dependsOn:
-      - Step 4 - Deploy application bits to Stage 
-
