@@ -43,7 +43,7 @@ steps:
   image: gcr.io/nebula-tasks/nebula-kubectl:57d9f2b
   spec:
     command: apply
-    file: deploy/nebula-demo.yaml
+    file: deploy-nodejs-app-to-k8s/deploy/nebula-demo.yaml
     namespace: default
     cluster:
       name: nebula-demo-cluster
@@ -64,7 +64,7 @@ steps:
         $type: Secret
         name: known_hosts
       name: nebula-demo
-      repository: git@github.com:puppetlabs/nebula-demo.git
+      repository: git@github.com:puppetlabs/nebula-workflow-examples.git
   dependsOn:
   - deploy-mongodb
 - name: slack-notify
