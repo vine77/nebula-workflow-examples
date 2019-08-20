@@ -1,16 +1,16 @@
-locals {
-  # Workaround for https://github.com/hashicorp/terraform/issues/15966
-  workspace-settings = {
-    file = "workspace.${terraform.workspace}.tfvars.json"
+variable "gcp_region" {
+  description = "The GCP region to deploy to"
+  default = ""
+}
 
-    defaults = {
-      gcp_region                      = "" 
-      gcp_location                    = ""
-      gcp_project                     = ""
-    }
-  }
+variable "gcp_location" {
+  description = "The GCP location to deploy to"
+  default = ""
+}
 
-  workspace = "${merge(local.workspace-settings.defaults, jsondecode(fileexists(local.workspace-settings.file) ? file(local.workspace-settings.file) : "{}"))}"
+variable "gcp_project" {
+  description = "The GCP project to deploy under"
+  default = ""
 }
 
 variable "google-credentials" {
