@@ -44,7 +44,7 @@ In this step, we deploy a Kubernetes cluster on GKE using the Terraform step. Th
 **Notes:**
 - You must have a GCP bucket called `sandbox` for this example. This is where the Workflow stores the Terraform state file. 
 - `gcp_region`, `gcp_location` can be used to change the target GCP location for the cluster
-- `gcp_project` identifies which GCP project to deploy under. 
+- `gcp_project` identifies which GCP project to deploy under. Modify this value to deploy under your own project.
  
  ### Step 3 Notify with Slack
  Based on the successful provisioning of the cluster, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
