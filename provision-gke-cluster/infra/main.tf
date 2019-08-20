@@ -1,8 +1,8 @@
 terraform {
   required_version = ">= 0.11.11"
   backend "gcs" {
-    bucket = "kenazk-sandbox"
-    prefix = "kenazk"
+    bucket = "${local.workspace["gcp_bucket"]}"
+    prefix = "demo"
   }
 }
 

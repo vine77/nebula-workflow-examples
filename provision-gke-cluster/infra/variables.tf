@@ -4,9 +4,10 @@ locals {
     file = "workspace.${terraform.workspace}.tfvars.json"
 
     defaults = {
-      gcp_region                      = "us-east1"
-      gcp_location                    = "us-east1-b"
-      gcp_project                     = "kenazk-sandbox"
+      gcp_region                      = "" 
+      gcp_location                    = ""
+      gcp_project                     = ""
+      gcp_bucket		      = ""
     }
   }
 
