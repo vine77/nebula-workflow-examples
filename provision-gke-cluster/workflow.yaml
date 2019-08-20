@@ -15,7 +15,7 @@ steps:
       gcp_location: us-east1-b
       gcp_project: kenazk-sandbox
     workspace: nebula-demo
-    directory: provision-GKE-cluster/infra
+    directory: provision-gke-cluster/infra
     credentials:
       credentials.json:
         $type: Secret
