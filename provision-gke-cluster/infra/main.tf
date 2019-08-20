@@ -1,7 +1,7 @@
 terraform {
   required_version = ">= 0.11.11"
   backend "gcs" {
-    bucket = "sandbox"
+    bucket = "demo-sandbox-123"
     prefix = "demo"
   }
 }

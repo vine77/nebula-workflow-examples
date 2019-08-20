@@ -21,7 +21,7 @@ This Workflow requires configuration of the following secrets:
 ## What's happening
 
 ### Step 1 Init
-This is an example step of any initial activities you might want to do before creating the cluster.
+This is an example step of any initial activities you might want to do before deploying the application.
 
 ### Step 2 Helm deploy mongodb
 In this step, we deploy a mongodb instance onto a Kubernetes cluster using Helm to deploy the latest mongo Helm chart. The Helm Nebula step is configured as follows: 
