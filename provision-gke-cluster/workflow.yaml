@@ -1,0 +1,37 @@
+version: v1
+description: Nebula Provision Demo
+
+steps:
+- name: init-workflow
+  image: alpine:latest
+  input:
+    - echo "Initializing workflow - Nebula Provision Demo"
+    - echo "Provisioning a GKE cluster"
+- name: provision-nebula-demo
+  image: gcr.io/nebula-tasks/nebula-terraform:57d9f2b
+  spec:
+    vars:
+      gcp_region: us-east1
+      gcp_location: us-east1-b
+      gcp_project: kenazk-sandbox
+    workspace: nebula-demo
+    directory: provision-GKE-cluster/infra
+    credentials:
+      credentials.json:
+        $type: Secret
+        name: credentials
+    git:
+      name: nebula-workflow-examples
+      repository: https://github.com/puppetlabs/nebula-workflow-examples.git
+  dependsOn:
+  - init-workflow
+- name: slack-notify
+  image: gcr.io/nebula-tasks/nebula-slack-notification:57d9f2b
+  spec:
+    apitoken:
+      $type: Secret
+      name: slack-token
+    channel: "#nebula-workflows"
+    message: "Provisioning succeeded! Good job everyone."
+  dependsOn:
+  - provision-nebula-demo
