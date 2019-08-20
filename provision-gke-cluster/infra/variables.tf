@@ -7,7 +7,6 @@ locals {
       gcp_region                      = "" 
       gcp_location                    = ""
       gcp_project                     = ""
-      gcp_bucket		      = ""
     }
   }
 

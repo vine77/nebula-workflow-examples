@@ -14,7 +14,6 @@ steps:
       gcp_region: us-east1
       gcp_location: us-east1-b
       gcp_project: kenazk-sandbox
-      gcp_bucket: kenazk-sandbox
     workspace: nebula-demo
     directory: provision-gke-cluster/infra/
     credentials:
