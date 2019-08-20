@@ -47,7 +47,7 @@ In this step, we deploy a Kubernetes cluster on GKE using the Terraform step. Th
 - `gcp_project` identifies which GCP project to deploy under. 
  
  ### Step 3 Notify with Slack
- Based on the successful deployment of the nodejs app, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
+ Based on the successful provisioning of the cluster, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
  ```
  - name: slack-notify
   image: gcr.io/nebula-tasks/nebula-slack-notification:57d9f2b
