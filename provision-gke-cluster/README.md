@@ -42,7 +42,7 @@ In this step, we deploy a Kubernetes cluster on GKE using the Terraform step. Th
   - init-workflow
 ```
 **Notes:**
-- You must have a GCP bucket called `sandbox` for this example. This is where the Workflow stores the Terraform state file. 
+- You must have provide a GCP bucket (in the example, called `demo-sandbox-123`) for this example Workflow in the `main.tf` file. This is where the Workflow stores the Terraform state file. 
 - `gcp_region`, `gcp_location` can be used to change the target GCP location for the cluster
 - `gcp_project` identifies which GCP project to deploy under. Modify this value to deploy under your own project.
  
