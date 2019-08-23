@@ -11,15 +11,15 @@ This repository contains example Workflows for [Project Nebula](https://puppet.c
 | Workflow      | Description   | 
 | ------------- | ------------- |
 | [Basic deploy Nodejs app to K8s](./deploy-nodejs-app-to-k8s)| Deploys a basic nodejs app to Kubernetes. It first stands up a mongodb instance using Helm and then creates the Kubernetes deployment using kubectl. |
-| [Basic deploy Nodejs app to ECS](./deploy-nodejs-app-to-ecs) | Deploys a basic nodejs app to ECS |
-| [Canary deploy Sock Shop app to K8s](./deploy-sockshop-to-k8s) | Deploys the Sock Shop app to Kubernetes and demonstrates canary deployment| 
-| [Rolling deploy Voting app to ECS](./deploy-voting-app-to-ecs) | Deploys the Voting App to ECS and demonstrates rolling deployment |
-| *STRETCH* Deploy lambda application | Deploy an app to Lambda | 
+|_NEW_ [Basic deploy Nodejs app to ECS](./deploy-nodejs-app-to-ecs) | Deploys a basic nodejs app to ECS |
+|_NEW_ [Canary deploy Sock Shop app to K8s](./deploy-sockshop-to-k8s) | Deploys the Sock Shop app to Kubernetes and demonstrates canary deployment| 
+|_NEW_ [Rolling deploy Voting app to ECS](./deploy-voting-app-to-ecs) | Deploys the Voting App to ECS and demonstrates rolling deployment |
+|_NEW_ *STRETCH* Deploy lambda application | Deploy an app to Lambda | 
 
 ## Cloud Infrastructure Workflows
 | Workflow      | Description   | 
 | ------------- | ------------- |
 | [Provision GKE cluster with Terraform](./provision-gke-terraform) | Provisions a sample Kubernetes cluster on GKE using Terraform. | 
-| [Provision ECS cluster](./provision-ecs-cluster) | Provisions a sample ECS cluster on AWS using Nebula's ECS provisioner. |
-| [Provision K8s cluster on AWS EC2 with Helm, Istio](./provision-k8s-cluster-ec2) | Provisions a sample Kubernetes cluster on AWS EC2 instances and configures it with Helm, Istio |
+|_NEW_ [Provision ECS cluster](./provision-ecs-cluster) | Provisions a sample ECS cluster on AWS using Nebula's ECS provisioner. |
+|_NEW_ [Provision K8s cluster on AWS EC2 with Helm, Istio](./provision-k8s-cluster-ec2) | Provisions a sample Kubernetes cluster on AWS EC2 instances and configures it with Helm, Istio |
 
