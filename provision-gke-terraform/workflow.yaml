@@ -7,15 +7,15 @@ steps:
   input:
     - echo "Initializing workflow - Nebula Provision Demo"
     - echo "Provisioning a GKE cluster"
-- name: provision-nebula-demo
-  image: gcr.io/nebula-tasks/nebula-terraform:57d9f2b
+- name: provision-gke-with-terraform
+  image: projectnebula/terraform:bf8ecb9
   spec:
     vars:
       gcp_region: us-east1
       gcp_location: us-east1-b
       gcp_project: kenazk-sandbox
     workspace: nebula-demo
-    directory: provision-gke-cluster/infra/
+    directory: provision-gke-terraform/infra/
     credentials:
       credentials.json:
         $type: Secret
@@ -26,12 +26,12 @@ steps:
   dependsOn:
   - init-workflow
 - name: slack-notify
-  image: gcr.io/nebula-tasks/nebula-slack-notification:57d9f2b
+  image: projectnebula/slack-notification:bf8ecb9
   spec:
     apitoken:
       $type: Secret
       name: slack-token
     channel: "#nebula-workflows"
-    message: "Provisioning succeeded! Good job everyone."
+    message: "Provisioning K8s with Terraform succeeded! Good job everyone."
   dependsOn:
-  - provision-nebula-demo
+  - provision-gke-with-terraform

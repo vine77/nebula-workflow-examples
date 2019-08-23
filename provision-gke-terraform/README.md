@@ -1,6 +1,6 @@
 # Provision GKE cluster 
 
-This Nebula Workflow provisions a sample Kubernetes cluster on GKE. 
+This Nebula Workflow provisions a sample Kubernetes cluster on GKE using Terraform. 
 
 The Workflow is defined in `workflow.yaml`.
 
@@ -13,6 +13,9 @@ This Workflow requires configuration of the following secrets:
 | ------------- | ------------- | ------- |
 | credential    | Base64 encoded GCP service account key | [Details on getting a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) |
 | slack-token   | Slack authentication token | [Getting a slack token](https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens) |
+
+**Notes:**
+- You must have provide a GCP bucket (in the example, called `demo-sandbox-123`) for this example Workflow in the `main.tf` file accessible by the provided Service Account. This is where the Workflow stores the Terraform state file. 
 
 ## What's happening
 
