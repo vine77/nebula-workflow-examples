@@ -13,7 +13,7 @@ provider "google" {
 }
 
 resource "google_container_cluster" "k8sexample" {
-  name               = "k8sexample-k8s-cluster"
+  name               = "k8sexample-cluster"
   description        = "example k8s cluster"
   location           = "${local.workspace["gcp_location"]}"
   initial_node_count = "${var.initial_node_count}"
