@@ -8,7 +8,7 @@ steps:
     - echo "Initializing workflow - Nebula Deploy Demo"
     - echo "Deploying a NodeJS application to Kubernetes"
 - name: deploy-mongodb
-  image: gcr.io/nebula-tasks/nebula-helm-deployer:57d9f2b
+  image: projectnebula/helm-deployer:bf8ecb9
   spec:
     values:
       mongodbRootPassword: mongo-password
@@ -32,7 +32,7 @@ steps:
   dependsOn:
     - init-workflow
 - name: deploy-nebula-demo
-  image: gcr.io/nebula-tasks/nebula-kubectl:57d9f2b
+  image: projectnebula/kubectl:bf8ecb9
   spec:
     command: apply
     file: deploy-nodejs-app-to-k8s/deploy/nebula-demo.yaml
@@ -54,12 +54,12 @@ steps:
   dependsOn:
   - deploy-mongodb
 - name: slack-notify
-  image: gcr.io/nebula-tasks/nebula-slack-notification:57d9f2b
+  image: projectnebula/slack-notification:bf8ecb9
   spec:
     apitoken:
       $type: Secret
       name: slack-token
     channel: "#nebula-workflows"
-    message: "Deployment succeeded!"
+    message: "Deployment using Helm and kubectl succeeded!"
   dependsOn:
   - deploy-nebula-demo

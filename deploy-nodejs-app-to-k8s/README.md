@@ -27,7 +27,7 @@ This is an example step of any initial activities you might want to do before de
 In this step, we deploy a mongodb instance onto a Kubernetes cluster using Helm to deploy the latest mongo Helm chart. The Helm Nebula step is configured as follows: 
 ```
 - name: deploy-mongodb
-  image: gcr.io/nebula-tasks/nebula-helm-deployer:57d9f2b
+  image: projectnebula/helm-deployer:bf8ecb9
   spec:
     values:
       mongodbRootPassword: mongo-password
@@ -59,7 +59,7 @@ Kubernetes cluster is specified in the Step using the `name`, `url`, `cadata`, a
 In this step, we deploy the nodejs app to the cluster using the kubectl Nebula step. The step is configured as follows: 
 ```
 - name: deploy-nebula-demo
-  image: gcr.io/nebula-tasks/nebula-kubectl:57d9f2b
+  image: projectnebula/kubectl:bf8ecb9
   spec:
     command: apply
     file: deploy-nodejs-app-to-k8s/deploy/nebula-demo.yaml
@@ -85,14 +85,14 @@ In this step, we deploy the nodejs app to the cluster using the kubectl Nebula s
  ### Step 4 Notify with Slack
  Based on the successful deployment of the nodejs app, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
  ```
- - name: slack-notify
-  image: gcr.io/nebula-tasks/nebula-slack-notification:57d9f2b
-  spec:
-    apitoken:
-      $type: Secret
-      name: slack-token
-    channel: "#nebula-workflows"
-    message: "Provisioning succeeded! Good job everyone."
-  dependsOn:
-  - provision-nebula-demo
+  - name: slack-notify
+    image: projectnebula/slack-notification:bf8ecb9
+    spec:
+      apitoken:
+        $type: Secret
+        name: slack-token
+      channel: "#nebula-workflows"
+      message: "Deployment using Helm and kubectl succeeded!"
+    dependsOn:
+    - deploy-nebula-demo
   ```
