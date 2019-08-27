@@ -1,15 +1,15 @@
 # Deploy NodeJS app to Kubernetes
 
-This Nebula Workflow deploys a basic nodejs app to K8s. It first stands up a `mongodb` instance using Helm and then creates the Kubernetes deployment using kubectl. 
+This Nebula workflow deploys a basic Node.js app to Kubernetes. It first stands up a `mongodb` instance using Helm and then creates the Kubernetes deployment using `kubectl`. 
 
-The Workflow is defined in `deploy-nodejs-app-to-k8s.yml`.
+The workflow is defined in `deploy-nodejs-app-to-k8s.yml`.
 
-<h4 align="center"><img src="../media/deploy-nodejs-app-to-k8s.png" alt="Deploy Nodejs App to K8s Workflow"></h4>
+<h4 align="center"><img src="../media/deploy-nodejs-app-to-k8s.png" alt="Deploy Node.js App to K8s workflow"></h4>
 
 ## Pre-requisites
-This Workflow assumes that you have a publicly accessible Kubernetes cluster. 
+This workflow assumes that you have a publicly accessible Kubernetes cluster. 
 
-This Workflow requires configuration of the following secrets:
+Configure the following secrets:
 
 | Secret        | Description   | Notes   | 
 | ------------- | ------------- | ------- |
@@ -53,10 +53,10 @@ In this step, we deploy a mongodb instance onto a Kubernetes cluster using Helm 
 ```
 Kubernetes cluster is specified in the Step using the `name`, `url`, `cadata`, and `token`. 
 
-*NOTE: For simplification, mongodb credentials have been hardcoded into Workflow file for illustration. You shouldn't do this for real.* 
+*NOTE: For simplification, mongodb credentials have been hardcoded into workflow file for illustration. You shouldn't do this for real.* 
 
-### Step 3 kubectl deploy nodejs app
-In this step, we deploy the nodejs app to the cluster using the kubectl Nebula step. The step is configured as follows: 
+### Step 3 kubectl deploy Node.js app
+In this step, we deploy the Node.js app to the cluster using the kubectl Nebula step. The step is configured as follows: 
 ```
 - name: deploy-nebula-demo
   image: projectnebula/kubectl:bf8ecb9
@@ -83,7 +83,7 @@ In this step, we deploy the nodejs app to the cluster using the kubectl Nebula s
   ```
  
  ### Step 4 Notify with Slack
- Based on the successful deployment of the nodejs app, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
+ Based on the successful deployment of the Node.js app, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
  ```
   - name: slack-notify
     image: projectnebula/slack-notification:bf8ecb9

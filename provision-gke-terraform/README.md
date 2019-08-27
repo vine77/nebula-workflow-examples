@@ -1,21 +1,29 @@
 # Provision GKE cluster 
 
-This Nebula Workflow provisions a sample Kubernetes cluster on GKE using Terraform. 
+This Nebula workflow provisions a sample Kubernetes cluster on GKE using Terraform. 
 
-The Workflow is defined in `workflow.yaml`.
+The workflow is defined in `workflow.yaml`.
+
+> **Note** You must run this workflow from the `master` branch.
 
 <h4 align="center"><img src="../media/provision-k8s-cluster.png" alt="Provision GKE cluster"></h4>
 
 ## Pre-requisites
-This Workflow requires configuration of the following secrets:
+
+Before you run this workflow, create a Google Cloud
+Project (GCP) storage bucket named `demo-sandbox-123`. This is where Terraform
+stores the state files for your cluster. Make sure that you have a
+service account with storage access to the bucket.
+
+> **Note:** If you would prefer to use a different bucket, change the
+> `bucket` value in [main.tf](./infra/main.tf) to the name of your bucket. For example, `bucket = "my-bucket"`
+
+Configure the following secrets:
 
 | Secret        | Description   | Notes   | 
 | ------------- | ------------- | ------- |
 | credential    | Base64 encoded GCP service account key | [Details on getting a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) |
-| slack-token   | Slack authentication token | [Getting a slack token](https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens) |
-
-**Notes:**
-- You must have provide a GCP bucket (in the example, called `demo-sandbox-123`) for this example Workflow in the `main.tf` file accessible by the provided Service Account. This is where the Workflow stores the Terraform state file. 
+| slack-token   | Slack authentication token | [Getting a slack token](https://get.slack.help/hc/en-us/articles/215770388-Create-and-regenerate-API-tokens) | 
 
 ## What's happening
 
@@ -44,13 +52,16 @@ In this step, we deploy a Kubernetes cluster on GKE using the Terraform step. Th
   dependsOn:
   - init-workflow
 ```
-**Notes:**
-- You must have provide a GCP bucket (in the example, called `demo-sandbox-123`) for this example Workflow in the `main.tf` file. This is where the Workflow stores the Terraform state file. 
-- `gcp_region`, `gcp_location` can be used to change the target GCP location for the cluster for a particular Terraform Workspace.
-- `gcp_project` identifies which GCP project to deploy under. Modify this value to deploy under your own project.
+
+Use `gcp_region`, `gcp_location` to change the target GCP location for the cluster.
+
+Replace `gcp_project` with the name of your GCP project. This is where the
+  step will deploy the cluster.
  
  ### Step 3 Notify with Slack
- Based on the successful provisioning of the cluster, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
+ If the provisioning step succeeds, this step creates a Slack notification and
+ sends it to a Slack channel.
+
  ```
 - name: slack-notify
   image: projectnebula/slack-notification:bf8ecb9
@@ -63,3 +74,7 @@ In this step, we deploy a Kubernetes cluster on GKE using the Terraform step. Th
   dependsOn:
   - provision-gke-with-terraform
   ```
+
+Set `channel` to an existing Slack channel.
+
+Edit `message` to personalize your notification message.
