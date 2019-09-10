@@ -4,7 +4,7 @@ This Nebula workflow deploys a basic Node.js app to Kubernetes. It first stands 
 
 The workflow is defined in `deploy-nodejs-app-to-k8s.yml`.
 
-<h4 align="center"><img src="../../media/deploy-nodejs-app-to-k8s.png" alt="Deploy Node.js App to K8s workflow"></h4>
+<p align="center"><img src="../../media/deploy-nodejs-app-to-k8s.png" alt="Deploy Node.js App to K8s workflow"></p>
 
 ## Pre-requisites
 This workflow assumes that you have a publicly accessible Kubernetes cluster.
