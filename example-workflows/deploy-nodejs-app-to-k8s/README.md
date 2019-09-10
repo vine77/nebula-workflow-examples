@@ -1,17 +1,17 @@
 # Deploy NodeJS app to Kubernetes
 
-This Nebula workflow deploys a basic Node.js app to Kubernetes. It first stands up a `mongodb` instance using Helm and then creates the Kubernetes deployment using `kubectl`. 
+This Nebula workflow deploys a basic Node.js app to Kubernetes. It first stands up a `mongodb` instance using Helm and then creates the Kubernetes deployment using `kubectl`.
 
 The workflow is defined in `deploy-nodejs-app-to-k8s.yml`.
 
-<h4 align="center"><img src="../media/deploy-nodejs-app-to-k8s.png" alt="Deploy Node.js App to K8s workflow"></h4>
+<h4 align="center"><img src="../../media/deploy-nodejs-app-to-k8s.png" alt="Deploy Node.js App to K8s workflow"></h4>
 
 ## Pre-requisites
-This workflow assumes that you have a publicly accessible Kubernetes cluster. 
+This workflow assumes that you have a publicly accessible Kubernetes cluster.
 
 Configure the following secrets:
 
-| Secret        | Description   | Notes   | 
+| Secret        | Description   | Notes   |
 | ------------- | ------------- | ------- |
 | url           | Kubernetes Cluster URL | Provided a local `kubeconfig` exists, use `$ kubectl config view --raw -o json \| jq -r '.clusters[0].cluster.server'` to grab URL of the cluster. *NOTE: [jq](https://stedolan.github.io/jq/) is needed as a prerequisite.* |
 | cadata        | Base64 encoded certificate authority data | Provided a local `kubeconfig` exists, use `$ kubectl config view --raw -o json \| jq -r '.clusters[0].cluster."certificate-authority-data"'` to retrieve the certificate-authority-data value. *NOTE: [jq](https://stedolan.github.io/jq/) is needed as a prerequisite.* |
@@ -24,7 +24,7 @@ Configure the following secrets:
 This is an example step of any initial activities you might want to do before deploying the application.
 
 ### Step 2 Helm deploy mongodb
-In this step, we deploy a mongodb instance onto a Kubernetes cluster using Helm to deploy the latest mongo Helm chart. The Helm Nebula step is configured as follows: 
+In this step, we deploy a mongodb instance onto a Kubernetes cluster using Helm to deploy the latest mongo Helm chart. The Helm Nebula step is configured as follows:
 ```
 - name: deploy-mongodb
   image: projectnebula/helm-deployer:bf8ecb9
@@ -51,12 +51,12 @@ In this step, we deploy a mongodb instance onto a Kubernetes cluster using Helm 
   dependsOn:
     - init-workflow
 ```
-Kubernetes cluster is specified in the Step using the `name`, `url`, `cadata`, and `token`. 
+Kubernetes cluster is specified in the Step using the `name`, `url`, `cadata`, and `token`.
 
-*NOTE: For simplification, mongodb credentials have been hardcoded into workflow file for illustration. You shouldn't do this for real.* 
+*NOTE: For simplification, mongodb credentials have been hardcoded into workflow file for illustration. You shouldn't do this for real.*
 
 ### Step 3 kubectl deploy Node.js app
-In this step, we deploy the Node.js app to the cluster using the kubectl Nebula step. The step is configured as follows: 
+In this step, we deploy the Node.js app to the cluster using the kubectl Nebula step. The step is configured as follows:
 ```
 - name: deploy-nebula-demo
   image: projectnebula/kubectl:bf8ecb9
@@ -81,9 +81,9 @@ In this step, we deploy the Node.js app to the cluster using the kubectl Nebula 
   dependsOn:
   - deploy-mongodb
   ```
- 
+
  ### Step 4 Notify with Slack
- Based on the successful deployment of the Node.js app, we notify in slack using the Nebula Slack step that provisioning has succeeded: 
+ Based on the successful deployment of the Node.js app, we notify in slack using the Nebula Slack step that provisioning has succeeded:
  ```
   - name: slack-notify
     image: projectnebula/slack-notification:bf8ecb9

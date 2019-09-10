@@ -4,7 +4,7 @@ This Nebula workflow sends a message to a Slack channel using the Slack step.
 
 The workflow is defined in `notify-slack.yml`.
 
-<h4 align="center"><img src="../media/slack-workflow.png" alt="Slack Workflow"></h4>
+<h4 align="center"><img src="../../media/slack-workflow.png" alt="Slack Workflow"></h4>
 
 
 ## Pre-requisites
