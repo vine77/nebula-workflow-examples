@@ -35,7 +35,7 @@ steps:
   image: projectnebula/kubectl:bf8ecb9
   spec:
     command: apply
-    file: deploy-nodejs-app-to-k8s/deploy/nebula-demo.yaml
+    file: example-workflows/deploy-nodejs-app-to-k8s/deploy/nebula-demo.yaml
     namespace: default
     cluster:
       name: nebula-demo-cluster
