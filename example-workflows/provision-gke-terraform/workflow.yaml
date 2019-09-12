@@ -15,7 +15,7 @@ steps:
       gcp_location: us-east1-b
       gcp_project: kenazk-sandbox
     workspace: nebula-demo
-    directory: provision-gke-terraform/infra/
+    directory: example-workflows/provision-gke-terraform/infra/
     credentials:
       credentials.json:
         $type: Secret
