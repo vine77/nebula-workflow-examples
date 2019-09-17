@@ -16,7 +16,7 @@ stores the state files for your cluster. Make sure that you have a
 service account with storage access to the bucket.
 
 > **Note:** If you would prefer to use a different bucket, change the
-> `bucket` value in [main.tf](./infra/main.tf) to the name of your bucket. For example, `bucket = "my-bucket"`
+> `bucket` value in [main.tf](https://github.com/puppetlabs/nebula-workflow-examples/blob/master/example-workflows/provision-gke-terraform/infra/main.tf) to the name of your bucket. For example, `bucket = "my-bucket"`
 
 Configure the following secrets:
 
