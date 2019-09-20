@@ -6,7 +6,7 @@ The workflow is defined in `workflow.yaml`.
 
 > **Note** You must run this workflow from the `master` branch.
 
-<p align="center"><img src="../../media/provision-k8s-cluster.png" alt="Provision GKE cluster"></p>
+<p align="center"><img src="./provision-gke-terraform.png" alt="Provision GKE cluster"></p>
 
 ## Pre-requisites
 
