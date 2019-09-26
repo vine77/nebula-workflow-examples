@@ -16,7 +16,7 @@ steps:
 - name: slack-notify
   image: projectnebula/slack-notification:bf8ecb9
   spec:
-  apitoken:
+    apitoken:
        $type: Secret
        name: slack-token
     channel:
