@@ -6,4 +6,4 @@ This repository contains example workflows for [Project Nebula](https://puppet.c
 | [Sample workflow](./example-workflows/sample-workflow)| Example workflow that models the types of workflow steps that a user can execute within Nebula |
 | [Notify with Slack](./example-workflows/notify-slack)| Sends a message to a Slack channel using the Slack Step. |
 | [Deploy Node.js app to K8s](./example-workflows/deploy-nodejs-app-to-k8s)| Deploys a basic Node.js app to Kubernetes. It first stands up a mongodb instance using Helm and then creates the Kubernetes deployment using kubectl. |
-| [Provision GKE cluster with Terraform](./example-workflows/provision-gke-terraform) | Provisions a sample Kubernetes cluster on GKE using Terraform. |
+| [Provision and deploy GKE cluster with Terraform](./example-workflows/provision-and-deploy-gke-terraform) | Provisions and deploys a sample Kubernetes cluster on GKE using Terraform. |
