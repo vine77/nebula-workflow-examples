@@ -2,7 +2,7 @@
 
 This Nebula workflow provisions and deploys a sample Kubernetes cluster on GKE using Terraform.
 
-The workflow is defined in `workflow.yaml`.
+The workflow is defined in `provision-and-deploy-gke-terraform.yml`.
 
 > **Note** You must run this workflow from the `master` branch.
 
